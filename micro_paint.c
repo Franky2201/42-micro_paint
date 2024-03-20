@@ -33,8 +33,7 @@ typedef struct s_circle
 	char	type;
 	float	X;
 	float	Y;
-	float	W;
-	float	H;
+	float	R;
 	char	c;
 }	t_circle;
 
@@ -86,7 +85,7 @@ void	ft_draw(t_circle c)
 
 int	ft_invalidCircle(t_circle circle)
 {
-	if (circle.type != 'r' && circle.type != 'R')
+	if (circle.type != 'c' && circle.type != 'C')
 		return (1);
 	if (circle.W <= 0 || circle.H <= 0)
 		return (1);
@@ -124,7 +123,7 @@ int	main(int ac, char **av)
 	memset(window, tab.c, sizeof(char) * 300 * 300);
 	while (scan != 0 && scan != EOF)
 	{
-		scan = fscanf(fd, " %c %f %f %f %f %c ", &circle.type, &circle.X, &circle.Y, &circle.W, &circle.H, &circle.c);
+		scan = fscanf(fd, " %c %f %f %f %c ", &circle.type, &circle.X, &circle.Y, &circle.R, &circle.c);
 		if (scan == 0 || scan == EOF)
 			break ;
 		if (scan != 6 || ft_invalidCircle(circle))
